@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPT讲解页面</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
+    <div class="relative w-full h-screen group">
+        <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" onclick="handlePrevSlide()">上一页</button>
+        <div id="slide-container" class="mx-auto w-full h-screen">
+            <iframe id="slide-iframe" src="page_1.html" class="w-full h-full rounded-lg shadow-lg"></iframe>
+        </div>
+        <button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" onclick="handleNextSlide()">下一页</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 15;
+
+        function handlePrevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function handleNextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function updateSlide() {
+            const iframe = document.getElementById('slide-iframe');
+            iframe.src = `page_${currentSlide}.html`;
+        }
+    </script>
+</body>
+</html>

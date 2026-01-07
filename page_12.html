@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>技术依赖与创新平衡</title>
+<link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script><style>
+        .bg-tech-blue {
+            background-color: #0a2342;
+        }
+        .text-tech-cyan {
+            color: #00d4ff;
+        }
+        .border-tech-cyan {
+            border-color: #00d4ff;
+        }
+        .geometric-shape {
+            opacity: 0.1;
+            position: absolute;
+        }
+        .slide-heading {
+            font-family: 'Arial', sans-serif;
+        }
+        .strategy-card {
+            transition: all 0.3s ease;
+        }
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        }
+        #balance-scale {
+            height: 200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="bg-tech-blue w-[1280px] h-[720px] relative overflow-hidden">
+<!-- Abstract geometric shapes for visual interest -->
+<div class="geometric-shape w-[400px] h-[400px] rounded-full bg-blue-400 -top-[200px] -right-[100px]"></div>
+<div class="geometric-shape w-[300px] h-[300px] rounded-full bg-cyan-400 bottom-[50px] -left-[150px]"></div>
+<!-- Tech-themed circuit pattern overlay -->
+<div class="absolute inset-0 opacity-5">
+<div class="absolute w-[1px] h-[720px] bg-white left-1/5"></div>
+<div class="absolute w-[1px] h-[720px] bg-white left-4/5"></div>
+<div class="absolute w-[1280px] h-[1px] bg-white top-1/5"></div>
+<div class="absolute w-[1280px] h-[1px] bg-white top-4/5"></div>
+</div>
+<!-- Content container -->
+<div class="relative z-10 h-full px-16 py-12">
+<!-- Slide number -->
+<div class="absolute top-6 right-8 text-gray-400 text-xl">
+                12/15
+            </div>
+<!-- Title -->
+<h1 class="slide-heading text-white text-5xl font-bold mb-8">
+                技术依赖与<span class="text-tech-cyan">创新平衡</span>
+</h1>
+<!-- Main content -->
+<div class="flex flex-col h-[550px]">
+<!-- Risks section -->
+<div class="mb-8">
+<h2 class="text-tech-cyan text-2xl font-semibold mb-4">
+<i class="fas fa-exclamation-triangle mr-2"></i>过度依赖AI的风险
+                    </h2>
+<div class="flex justify-between">
+<div class="flex items-start w-1/3 pr-4">
+<div class="bg-red-500 bg-opacity-20 rounded-full p-3 mr-3">
+<i class="fas fa-brain text-red-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white text-xl font-medium">创新思维受限</h3>
+<p class="text-gray-300 mt-1">过度依赖导致思维固化，缺乏创造性突破</p>
+</div>
+</div>
+<div class="flex items-start w-1/3 px-4">
+<div class="bg-red-500 bg-opacity-20 rounded-full p-3 mr-3">
+<i class="fas fa-puzzle-piece text-red-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white text-xl font-medium">问题解决能力下降</h3>
+<p class="text-gray-300 mt-1">解决复杂问题的能力减弱，难以应对非常规挑战</p>
+</div>
+</div>
+<div class="flex items-start w-1/3 pl-4">
+<div class="bg-red-500 bg-opacity-20 rounded-full p-3 mr-3">
+<i class="fas fa-search text-red-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white text-xl font-medium">缺乏批判性思考</h3>
+<p class="text-gray-300 mt-1">对AI输出缺乏质疑和审视，降低代码质量</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Balance visualization -->
+<div class="mb-6" id="balance-scale"></div>
+<!-- Strategies section -->
+<div>
+<h2 class="text-tech-cyan text-2xl font-semibold mb-4">
+<i class="fas fa-lightbulb mr-2"></i>保持团队创新能力的策略
+                    </h2>
+<div class="flex justify-between space-x-6">
+<div class="strategy-card bg-gray-800 bg-opacity-50 rounded-lg border border-tech-cyan border-opacity-30 p-5 w-1/3">
+<div class="flex justify-center mb-3">
+<div class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-full flex items-center justify-center">
+<i class="fas fa-comments-alt text-tech-cyan text-2xl"></i>
+</div>
+</div>
+<h3 class="text-white text-xl font-medium text-center mb-2">创新头脑风暴</h3>
+<p class="text-gray-300 text-center">定期组织不依赖AI工具的创新讨论会议，激发团队原创思维</p>
+</div>
+<div class="strategy-card bg-gray-800 bg-opacity-50 rounded-lg border border-tech-cyan border-opacity-30 p-5 w-1/3">
+<div class="flex justify-center mb-3">
+<div class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-full flex items-center justify-center">
+<i class="fas fa-calendar-alt text-tech-cyan text-2xl"></i>
+</div>
+</div>
+<h3 class="text-white text-xl font-medium text-center mb-2">&#34;无AI日&#34;</h3>
+<p class="text-gray-300 text-center">设立特定工作日，团队成员完全依靠自身能力解决问题</p>
+</div>
+<div class="strategy-card bg-gray-800 bg-opacity-50 rounded-lg border border-tech-cyan border-opacity-30 p-5 w-1/3">
+<div class="flex justify-center mb-3">
+<div class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-full flex items-center justify-center">
+<i class="fas fa-award text-tech-cyan text-2xl"></i>
+</div>
+</div>
+<h3 class="text-white text-xl font-medium text-center mb-2">创新奖励机制</h3>
+<p class="text-gray-300 text-center">建立奖励制度，表彰原创性解决方案，激励团队创新</p>
+</div>
+</div>
+</div>
+<!-- Bottom tip -->
+<div class="mt-auto">
+<p class="text-tech-cyan text-xl italic text-center">
+<i class="fas fa-quote-left text-sm align-super mr-1 opacity-70"></i>
+                        平衡AI使用和人类创新，是未来开发组长的核心能力
+                        <i class="fas fa-quote-right text-sm align-super ml-1 opacity-70"></i>
+</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // D3.js visualization for balance scale
+        document.addEventListener('DOMContentLoaded', function() {
+            const width = 600;
+            const height = 200;
+            
+            // Create SVG
+            const svg = d3.select("#balance-scale")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("viewBox", `0 0 ${width} ${height}`)
+                .attr("preserveAspectRatio", "xMidYMid meet");
+                
+            // Create the balance stand
+            svg.append("rect")
+                .attr("x", width/2 - 10)
+                .attr("y", 120)
+                .attr("width", 20)
+                .attr("height", 80)
+                .attr("fill", "#00d4ff")
+                .attr("opacity", 0.7);
+                
+            // Create the balance beam
+            svg.append("rect")
+                .attr("x", width/2 - 150)
+                .attr("y", 110)
+                .attr("width", 300)
+                .attr("height", 10)
+                .attr("fill", "#00d4ff")
+                .attr("opacity", 0.7);
+                
+            // Left side - AI dependence
+            svg.append("circle")
+                .attr("cx", width/2 - 120)
+                .attr("cy", 90)
+                .attr("r", 40)
+                .attr("fill", "#FF6B6B")
+                .attr("opacity", 0.7);
+                
+            svg.append("text")
+                .attr("x", width/2 - 120)
+                .attr("y", 95)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "14px")
+                .text("AI依赖");
+                
+            // Right side - Human creativity
+            svg.append("circle")
+                .attr("cx", width/2 + 120)
+                .attr("cy", 90)
+                .attr("r", 40)
+                .attr("fill", "#4ECDC4")
+                .attr("opacity", 0.7);
+                
+            svg.append("text")
+                .attr("x", width/2 + 120)
+                .attr("y", 95)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "14px")
+                .text("人类创造力");
+                
+            // Balance title
+            svg.append("text")
+                .attr("x", width/2)
+                .attr("y", 50)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "18px")
+                .attr("font-weight", "bold")
+                .text("寻找AI辅助与人类创新的平衡点");
+        });
+    </script>
+
+</body></html>
