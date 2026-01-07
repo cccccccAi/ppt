@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜谱详情 - 湘菜健康指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 简单的进度条动画 */
+        .bar-transition { transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* 湘菜主题定制 */
+        body {
+            background-color: #fcf9f2; /* 米纸色背景 */
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .font-serif-cn {
+            font-family: "Songti SC", "Noto Serif SC", serif;
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans pb-24 max-w-md mx-auto min-h-screen shadow-2xl relative border-x border-gray-100 bg-[#fcf9f2]">
+
+    <!-- 标识当前页面为详情页 -->
+    <div id="page-detail"></div>
+
+    <!-- 顶部图片区 -->
+    <div class="relative h-72 w-full">
+        <img id="recipe-image" src="" alt="" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#2c1810]/90 to-transparent"></div>
+        
+        <!-- 返回按钮 -->
+        <button onclick="history.back()" class="absolute top-4 left-4 w-9 h-9 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 active:scale-95 transition">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+
+        <div class="absolute bottom-6 left-5 text-white pr-5">
+            <h1 id="recipe-title" class="text-3xl font-bold mb-2 font-serif-cn tracking-wide text-shadow-sm"></h1>
+            <p id="recipe-desc" class="text-sm text-white/80 line-clamp-2 leading-relaxed font-light"></p>
+        </div>
+    </div>
+
+    <!-- 模式切换开关 -->
+    <div class="px-5 py-4 bg-white/95 backdrop-blur-sm border-b border-[#f3e9d8] sticky top-0 z-30 shadow-sm">
+        <div class="flex items-center justify-between cursor-pointer" id="mode-toggle-wrapper">
+            <span class="text-sm font-bold text-[#8B4513] font-serif-cn tracking-wider">口味调整</span>
+            <div class="flex items-center gap-3">
+                <span id="mode-label" class="text-xs font-medium text-gray-500 uppercase tracking-wide">Standard Mode</span>
+                <!-- Toggle Switch -->
+                <div id="mode-toggle" class="w-12 h-6 bg-gray-300 rounded-full flex items-center p-1 transition-colors duration-300 justify-start shadow-inner">
+                    <div class="w-4 h-4 bg-white rounded-full shadow-md"></div>
+                </div>
+            </div>
+        </div>
+        <p class="text-[10px] text-gray-400 mt-2 text-right">点击切换至“健康改良模式”，实时计算营养</p>
+    </div>
+
+    <!-- 营养仪表盘 -->
+    <section class="px-5 py-6 bg-white m-4 rounded-xl shadow-sm border border-[#f3e9d8]">
+        <div class="flex items-center justify-between mb-5 border-b border-dashed border-gray-100 pb-3">
+            <h2 class="text-base font-bold text-[#2c1810]">营养分析 <span class="text-xs font-normal text-gray-400 ml-1">(每份)</span></h2>
+            <span id="calories-val" class="text-xl font-mono font-bold text-[#D92E20]">0 kcal</span>
+        </div>
+        
+        <div class="space-y-5">
+            <!-- 脂肪 -->
+            <div>
+                <div class="flex justify-between text-xs mb-1.5">
+                    <span class="text-gray-500 font-medium">脂肪 (Fat)</span>
+                    <span id="fat-bar-val" class="font-bold text-gray-700">0g</span>
+                </div>
+                <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div id="fat-bar" class="h-full bg-yellow-400 w-0 shadow-sm"></div>
+                </div>
+            </div>
+            
+            <!-- 蛋白质 -->
+            <div>
+                <div class="flex justify-between text-xs mb-1.5">
+                    <span class="text-gray-500 font-medium">蛋白质 (Protein)</span>
+                    <span id="protein-bar-val" class="font-bold text-gray-700">0g</span>
+                </div>
+                <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div id="protein-bar" class="h-full bg-green-500 w-0 shadow-sm"></div>
+                </div>
+            </div>
+
+             <!-- 碳水 -->
+             <div>
+                <div class="flex justify-between text-xs mb-1.5">
+                    <span class="text-gray-500 font-medium">碳水 (Carb)</span>
+                    <span id="carb-bar-val" class="font-bold text-gray-700">0g</span>
+                </div>
+                <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div id="carb-bar" class="h-full bg-blue-400 w-0 shadow-sm"></div>
+                </div>
+            </div>
+
+            <!-- 嘌呤标签 -->
+            <div class="flex items-center gap-2 mt-4 pt-2 border-t border-gray-50">
+                <span class="text-xs text-gray-400">痛风风险提示:</span>
+                <span id="purine-badge" class="px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase">Loading...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 食材清单 (动态) -->
+    <section class="px-5 py-6">
+        <h2 class="text-lg font-bold mb-4 font-serif-cn text-[#8B4513] border-l-4 border-[#D92E20] pl-3">食材清单</h2>
+        <ul id="ingredients-list" class="space-y-0 bg-white rounded-xl border border-[#f3e9d8] divide-y divide-[#f3e9d8] overflow-hidden shadow-sm">
+            <!-- JS 插入 -->
+        </ul>
+        
+        <!-- 商业埋点 A: 买食材 -->
+        <button id="btn-buy" class="w-full mt-6 py-3.5 border border-[#408045] text-[#408045] rounded-xl flex items-center justify-center gap-2 font-bold hover:bg-[#408045] hover:text-white transition active:scale-95 shadow-sm">
+            <i class="fas fa-shopping-basket"></i>
+            一键购买同款低脂食材包
+        </button>
+    </section>
+
+    <!-- 制作步骤 -->
+    <section class="px-5 py-6 pb-10">
+        <h2 class="text-lg font-bold mb-4 font-serif-cn text-[#8B4513] border-l-4 border-[#D92E20] pl-3">制作步骤</h2>
+        <ol id="steps-list" class="space-y-6 pl-2">
+            <!-- JS 插入 -->
+        </ol>
+
+        <!-- 商业埋点 B: 直播课 -->
+        <div class="mt-10 bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl p-5 flex items-center justify-between border border-orange-200 shadow-sm">
+            <div>
+                <h4 class="font-bold text-[#D92E20] text-sm mb-1">想跟大厨学做这道菜？</h4>
+                <p class="text-xs text-orange-800/70">每周三晚8点，湘菜大师直播教学</p>
+            </div>
+            <button id="btn-live" class="bg-[#D92E20] text-white text-xs px-5 py-2.5 rounded-full font-bold shadow-md hover:bg-[#b92519] active:scale-95 transition">
+                预约直播
+            </button>
+        </div>
+    </section>
+
+    <!-- 引入逻辑 -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
