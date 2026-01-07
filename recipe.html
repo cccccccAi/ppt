@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>菜谱制作流程 · 家常番茄炒蛋</title>
+  <meta name="description" content="一步一步完成家常番茄炒蛋：配料、准备、烹饪与小贴士。">
+  <style>
+    :root {
+      --bg: #fffaf3;
+      --fg: #2b2b2b;
+      --accent: #e74a3b;
+      --muted: #6b5b4a;
+      --border: #f1e6d9;
+      --accent2: #f4c430;
+      --leaf: #2e7d32;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+    a { color: var(--leaf); text-decoration: none; }
+    a:focus, button:focus, [tabindex]:focus { outline: 3px solid #94d3a2; outline-offset: 2px; }
+    .container { max-width: 840px; margin: 0 auto; padding: 20px; }
+    header {
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(90deg, #fffaf3 0%, #fff3e6 50%, #ffe9e9 100%);
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+    .brand { font-weight: 700; font-size: 20px; color: var(--accent); }
+    nav ul { display: flex; gap: 12px; list-style: none; margin: 0; padding: 0; }
+    nav a:hover { color: var(--accent); }
+    main .section {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 { font-size: 28px; margin: 0 0 12px; color: var(--accent); }
+    h2 { font-size: 22px; margin: 0 0 12px; }
+    p { margin: 0 0 12px; color: var(--muted); }
+    .badge {
+      display: inline-block;
+      background: #fff7d6;
+      color: var(--fg);
+      border: 1px solid #f9e6a8;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 700px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+    ul, ol { margin: 0; padding-left: 18px; }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 1px 0 #f3e9dc inset;
+    }
+    .note {
+      border-left: 4px solid var(--leaf);
+      background: #edf7ed;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 20px;
+      color: var(--muted);
+      background: linear-gradient(90deg, #ffe9e9 0%, #fff3e6 50%, #fffaf3 100%);
+    }
+    .skiplink {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+    }
+    .skiplink:focus {
+      left: 12px;
+      top: 12px;
+      background: #111827;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+    #ingredients h2 { color: var(--accent); }
+    #prep h2 { color: var(--accent2); }
+    #cook h2 { color: var(--accent); }
+    #tips h2 { color: var(--leaf); }
+  </style>
+</head>
+<body>
+  <a class="skiplink" href="#content">跳到主要内容</a>
+  <header role="banner">
+    <div class="container">
+      <div class="brand" aria-label="页面标题">菜谱制作流程</div>
+      <nav aria-label="页面导航">
+        <ul>
+          <li><a href="#ingredients">配料</a></li>
+          <li><a href="#prep">准备</a></li>
+          <li><a href="#cook">烹饪</a></li>
+          <li><a href="#tips">小贴士</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="container" role="main" aria-labelledby="title">
+    <section class="section">
+      <h1 id="title">家常番茄炒蛋 <span class="badge" aria-label="耗时">约15分钟</span></h1>
+      <p>一步步完成经典家常菜。结构清晰、易操作，并配有替代方案与注意事项，帮助初学者快速上手。</p>
+    </section>
+
+    <section class="section grid grid-2" id="ingredients" aria-labelledby="ingredients-title">
+      <div class="card">
+        <h2 id="ingredients-title">配料</h2>
+        <ul>
+          <li>鸡蛋 3个</li>
+          <li>番茄 2个（中等大小）</li>
+          <li>食用油 2汤匙</li>
+          <li>食盐 1/2茶匙</li>
+          <li>白砂糖 1/2茶匙（平衡酸度）</li>
+          <li>葱花 1汤匙（可选）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>工具</h2>
+        <ul>
+          <li>不粘锅或炒锅</li>
+          <li>筷子或硅胶铲</li>
+          <li>碗与打蛋器</li>
+          <li>刀与案板</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="prep" aria-labelledby="prep-title">
+      <h2 id="prep-title">准备步骤</h2>
+      <ol>
+        <li>番茄洗净，切成小块；去蒂后更易出汁。</li>
+        <li>鸡蛋打入碗中，充分搅匀；可加少许清水使更嫩。</li>
+        <li>取少许盐，分成两次使用：一半加到蛋液，一半留到最后调味。</li>
+        <li>葱切葱花备用（可选）。</li>
+      </ol>
+      <div class="note" role="note">提示：蛋液加入一小勺水或牛奶可提升嫩度；番茄切块不宜过小，避免过度出水。</div>
+    </section>
+
+    <section class="section" id="cook" aria-labelledby="cook-title">
+      <h2 id="cook-title">烹饪流程</h2>
+      <ol>
+        <li>中火热锅，加入食用油，倒入蛋液；待边缘凝固后轻推翻面，炒至半熟盛出。</li>
+        <li>原锅留油，放入番茄块，翻炒至出汁；加入白砂糖，促进出汁并平衡酸度。</li>
+        <li>把半熟鸡蛋回锅与番茄混合，改小火，轻轻翻炒约30–60秒。</li>
+        <li>尝味后用剩余的盐调整；出锅前撒葱花（可选）。</li>
+        <li>装盘，静置1分钟让汤汁回流，口感更佳。</li>
+      </ol>
+      <div class="note" role="note">火候：鸡蛋用中火，番茄初期可略大火促出汁；回锅后转小火避免过老。</div>
+    </section>
+
+    <section class="section" id="tips" aria-labelledby="tips-title">
+      <h2 id="tips-title">小贴士与替代</h2>
+      <ul>
+        <li>更嫩版本：蛋液加入1/4茶匙淀粉与1汤匙水。</li>
+        <li>更鲜版本：番茄加入少许番茄膏或滴几滴生抽。</li>
+        <li>低盐方案：减少盐量，增加葱花与番茄熟度提味。</li>
+        <li>配饭建议：略多留汤汁，搭配米饭更合适。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div>© 2026 菜谱演示 · 可访问页面</div>
+      <div><a href="#content">返回顶部</a></div>
+    </div>
+  </footer>
+</body>
+</html>
